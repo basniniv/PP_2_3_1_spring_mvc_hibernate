@@ -16,24 +16,12 @@ public class Car {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getSeries() {
         return series;
     }
 
-    public void setSeries(int series) {
-        this.series = series;
-    }
-
     public String getColor() {
         return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     @Override
