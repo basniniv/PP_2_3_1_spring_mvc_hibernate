@@ -15,12 +15,8 @@ public class CarController {
     @Autowired
     public CarService carService;
     @GetMapping(value = "/cars")
-    public String calcPage(@RequestParam(value = "count",required = false) Integer count,
+    public String calcPage(@RequestParam(value = "count",required = false, defaultValue = "5") Integer count,
             Model model) {
-        int listSize = carService.getSizeList();
-        if (count == null || count >= listSize) {
-            count = listSize;
-        }
         List<Car> carsLimit = carService.listCars(count);
         model.addAttribute("answer", carsLimit);
         return "/cars";

@@ -7,5 +7,4 @@ public interface CarService {
 
     List<Car> listCars(int number);
 
-    int getSizeList();
 }

@@ -28,13 +28,13 @@ public final class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> listCars(int number) {
+        if (number >= 5) {
+            number = 5;
+        }
         return cars.stream()
                 .limit(number)
                 .collect(Collectors.toList());
     }
 
-    public int getSizeList() {
-        return cars.size();
-    }
 }
 
