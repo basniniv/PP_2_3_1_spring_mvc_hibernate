@@ -1,0 +1,20 @@
+<body>
+<h1>Список пользователей</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>эл. почта</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="car : ${answer}">
+    <td th:text="${user.firstName}"></td>
+    <td th:text="${user.lastName}"></td>
+    <td th:text="${user.email}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
