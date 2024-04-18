@@ -1,15 +1,79 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Список пользователей</title>
 </head>
+<style>
+  table {
+    width: 100%;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .btn {
+    background-color: #4CAF50; /* Зеленый */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .btn-delete {
+    background-color: #f44336; /* Красный */
+  }
+  .btn:hover {
+    opacity: 0.8;
+  }
+</style>
 <body>
-<div>
-  <th:block th:each="msg : ${messages}">
-    <h1 th:text="${msg}"></h1>
-  </th:block>
-</div>
+<h1>Список пользователей</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>Эл. почта</th>
+    <th colspan="2" style="text-align: center">update/delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.getId()}"></td>
+    <td th:text="${user.getFirstName()}"></td>
+    <td th:text="${user.getLastName()}"></td>
+    <td th:text="${user.getEmail()}"></td>
+    <td>
+      <form action="/edit" method="get">
+        <input type="hidden" name="id" th:value="${user.id}" />
+        <input type="submit" class="btn" value="Изменить" >
+      </form>
+    </td>
+    <td>
+      <form action="/deleteUser" method="post">
+        <input type="hidden" name="id" th:value="${user.id}" />
+        <input type="submit" class="btn btn-delete" value="Удалить" >
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br/>
+<button class="btn btn-primary" onclick="window.location.href = '/add'">Добавить пользователя</button>
 </body>
 </html>

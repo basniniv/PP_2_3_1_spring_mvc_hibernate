@@ -1,9 +1,9 @@
-package web.dao;
+package web.service;
 
 import java.util.List;
 import web.model.User;
 
-public interface UserDao {
+public interface UserService {
     void addUser(User user);
     void deleteUser(int id);
     void updateUser(User user);
